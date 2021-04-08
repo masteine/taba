@@ -1,9 +1,6 @@
 import React from "react";
 import { StyledText } from "./styles";
-
-interface IProps {
-  children: string;
-}
+import IProps from "./interface";
 
 const Title: React.FC<IProps> = ({ children }) => {
   return <StyledText>{children}</StyledText>;

@@ -1,8 +1,8 @@
 import React from "react";
-import IPageWrapper from "./PageWrap.interface";
+import IProps from "./interface";
 import { StyledView } from "./styles";
 
-const PageWrapper: React.FC<IPageWrapper> = ({ children }) => {
+const PageWrapper: React.FC<IProps> = ({ children }) => {
   return <StyledView>{children}</StyledView>;
 };
 

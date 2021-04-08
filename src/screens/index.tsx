@@ -1,3 +1,4 @@
 import HomeScreen from "./HomeScreen";
+import SetupScreen from "./SetupScreen";
 
-export { HomeScreen };
+export { HomeScreen, SetupScreen };
