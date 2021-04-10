@@ -29,14 +29,15 @@ import {
 import { NativeRouter, Route } from "react-router-native";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/theme";
-import { HomeScreen, SetupScreen } from "./src/screens";
+import { HomeScreen, SetupScreen, WorkingScreen } from "./src/screens";
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <NativeRouter>
-        <Route exact path="/setup" component={SetupScreen} />
-        <Route exact path="/" component={HomeScreen} />
+        {/* <Route exact path="/" component={HomeScreen} />
+        <Route exact path="/setup" component={SetupScreen} /> */}
+        <Route exact path="/" component={WorkingScreen} />
       </NativeRouter>
     </ThemeProvider>
   );

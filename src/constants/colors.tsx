@@ -1,7 +1,7 @@
 const WHITE: string = "#FFFFFF";
 const BLUE: string = "#6598FC";
 const CORAL: string = "#00D1FF";
-const BLACK: string = "#BLUE";
+const BLACK: string = "#000000";
 const GREY: string = "#C0C0C0";
 const LIGHTGREY: string = "#C4C4C4";
 const DARKGREY: string = "#9E9E9E";

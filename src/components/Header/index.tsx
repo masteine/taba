@@ -1,12 +1,12 @@
 import React from "react";
-import { View } from "react-native";
 import { StyledView, StyledText } from "./styles";
+import IProps from "./interface";
 
-const Header: React.FC = () => {
+const Header: React.FC<IProps> = ({ time }) => {
   return (
     <StyledView>
       <StyledText>Time: </StyledText>
-      <StyledText>4:00</StyledText>
+      <StyledText>{time}</StyledText>
     </StyledView>
   );
 };
