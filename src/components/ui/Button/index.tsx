@@ -8,6 +8,7 @@ const Button: React.FC<IButton> = ({
   type = "primary",
   size = "md",
   link,
+  styles,
   handleOnPress
 }) => {
   const history = useHistory();
@@ -18,7 +19,7 @@ const Button: React.FC<IButton> = ({
   };
 
   return (
-    <StyledButton onPress={handlePress} type={type} size={size}>
+    <StyledButton onPress={handlePress} type={type} size={size} style={styles}>
       <StyledText>{children}</StyledText>
     </StyledButton>
   );

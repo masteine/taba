@@ -1,12 +1,13 @@
 import React from "react";
-import { StyledView, StyledText } from "./styles";
 import IProps from "./interface";
+import { StyledView } from "./styles";
+import { Text } from "../../ui";
 
 const Header: React.FC<IProps> = ({ time }) => {
   return (
     <StyledView>
-      <StyledText>Time: </StyledText>
-      <StyledText>{time}</StyledText>
+      <Text>Time: </Text>
+      <Text>{time}</Text>
     </StyledView>
   );
 };

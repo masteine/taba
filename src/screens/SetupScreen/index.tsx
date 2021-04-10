@@ -1,8 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { ImageBackground, StyleSheet, View } from "react-native";
-import PageWrapper from "../../components/layouts/PageWrap";
+import { PageWrap, Footer, Header } from "../../components/layouts";
 import { Button } from "../../components/ui";
-import Header from "../../components/Header";
 import SetupItem from "../../components/SetupItem";
 
 const data = [
@@ -37,7 +36,7 @@ const SetupScreen: React.FC = () => {
     <ImageBackground
       source={require("../../assets/images/bg_4.png")}
       style={styles.image}>
-      <PageWrapper>
+      <PageWrap>
         <Header time="4:00" />
 
         <View style={styles.listBlock}>
@@ -53,16 +52,18 @@ const SetupScreen: React.FC = () => {
             );
           })}
         </View>
-        <View style={styles.btnBlock}>
-          <Button handleOnPress={handlePress} type="accept">
+        <Footer>
+          <Button handleOnPress={handlePress} type="accept" styles={styles.btn}>
             Save Complex
           </Button>
-          <Button handleOnPress={handlePress} type="info">
+          <Button handleOnPress={handlePress} type="info" styles={styles.btn}>
             Choose Complex
           </Button>
-          <Button handleOnPress={handlePress}>Start Complex</Button>
-        </View>
-      </PageWrapper>
+          <Button handleOnPress={handlePress} link="/working">
+            Start Complex
+          </Button>
+        </Footer>
+      </PageWrap>
     </ImageBackground>
   );
 };
@@ -75,9 +76,8 @@ const styles = StyleSheet.create({
   listBlock: {
     flex: 5
   },
-  btnBlock: {
-    flex: 2.2,
-    justifyContent: "space-between"
+  btn: {
+    marginBottom: 15
   }
 });
 

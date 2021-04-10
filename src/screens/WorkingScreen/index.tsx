@@ -1,20 +1,30 @@
 import React from "react";
 import { ImageBackground, StyleSheet, View, Text } from "react-native";
-import PageWrapper from "../../components/layouts/PageWrap";
+import { PageWrap, Footer, Header } from "../../components/layouts";
 import { Button } from "../../components/ui";
-import Header from "../../components/Header";
 
 const WorkingScreen: React.FC = () => {
+  const onPress = () => console.log("R");
   return (
     <ImageBackground
       source={require("../../assets/images/karsten-winegeart-ZiXqi1iSZyI-unsplash.jpg")}
       style={styles.image}>
-      <PageWrapper>
+      <PageWrap>
         <Header time="4:00" />
-        <View>
+
+        <View style={styles.contentBlock}>
           <Text>Rest</Text>
         </View>
-      </PageWrapper>
+
+        <Footer>
+          <Button type="danger" styles={styles.btn} handleOnPress={onPress}>
+            Pause
+          </Button>
+          <Button type="warning" handleOnPress={onPress}>
+            Stop
+          </Button>
+        </Footer>
+      </PageWrap>
     </ImageBackground>
   );
 };
@@ -24,15 +34,11 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "center"
   },
-  timeBlock: {
-    flex: 1
+  contentBlock: {
+    flex: 6
   },
-  listBlock: {
-    flex: 5
-  },
-  btnBlock: {
-    flex: 2.2,
-    justifyContent: "space-between"
+  btn: {
+    marginBottom: 15
   }
 });
 

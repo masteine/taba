@@ -3,5 +3,6 @@ export default interface IButton {
     type?: string;
     size?: string;
     link?: string;
+    styles?: any;
     handleOnPress?: () => void;
 }

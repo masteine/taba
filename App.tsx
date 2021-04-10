@@ -35,7 +35,7 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <NativeRouter>
-        {/* <Route exact path="/" component={HomeScreen} />*/}
+        {/* <Route exact path="/" component={HomeScreen} /> */}
         {/* <Route exact path="/" component={SetupScreen} /> */}
         <Route exact path="/" component={WorkingScreen} />
       </NativeRouter>

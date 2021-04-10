@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 
 export const StyledView = styled(View)`
   width: 100%;
@@ -10,13 +10,4 @@ export const StyledView = styled(View)`
   flex-direction: row;
   height: 52px;
   margin-bottom: 27px;
-`;
-
-export const StyledText = styled(Text)`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 32px;
-  line-height: 37px;
-  color: ${({ theme }: any) => theme.colors.WHITE};
 `;
