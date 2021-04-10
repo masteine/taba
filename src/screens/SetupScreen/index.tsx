@@ -38,9 +38,8 @@ const SetupScreen: React.FC = () => {
       source={require("../../assets/images/bg_4.png")}
       style={styles.image}>
       <PageWrapper>
-        <View style={styles.timeBlock}>
-          <Header time="4:00" />
-        </View>
+        <Header time="4:00" />
+
         <View style={styles.listBlock}>
           {timeSetup.map(({ value, label }, index) => {
             return (
@@ -72,9 +71,6 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     resizeMode: "center"
-  },
-  timeBlock: {
-    flex: 1
   },
   listBlock: {
     flex: 5

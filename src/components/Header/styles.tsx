@@ -9,7 +9,7 @@ export const StyledView = styled(View)`
   align-items: center;
   flex-direction: row;
   height: 52px;
-  width: 100%;
+  margin-bottom: 27px;
 `;
 
 export const StyledText = styled(Text)`
