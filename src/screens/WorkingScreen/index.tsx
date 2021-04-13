@@ -3,15 +3,18 @@ import { ImageBackground, View } from "react-native";
 import { PageWrap, Footer, Header } from "../../components/layouts";
 import { Button, Text, Card } from "../../components/ui";
 import { style } from "./style";
+
 const WorkingScreen: React.FC = () => {
   const [work, setWork] = useState(true);
+
   const onPress = () => console.log("R");
 
+  const stopWorking = () => console.log("stop working");
   return (
     <ImageBackground
       source={require("../../assets/images/karsten-winegeart-ZiXqi1iSZyI-unsplash.jpg")}
       style={style.image}>
-      <PageWrap>
+      <PageWrap bgOpacity="77">
         <Header time="4:00" />
 
         {work ? (
@@ -29,10 +32,10 @@ const WorkingScreen: React.FC = () => {
         )}
 
         <Footer>
-          <Button type="danger" styles={style.btn} handleOnPress={onPress}>
+          <Button type="warning" styles={style.btn} handleOnPress={onPress}>
             Pause
           </Button>
-          <Button type="warning" handleOnPress={onPress}>
+          <Button type="danger" link="/setup" handleOnPress={stopWorking}>
             Stop
           </Button>
         </Footer>

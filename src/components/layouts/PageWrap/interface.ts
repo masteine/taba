@@ -1,3 +1,4 @@
 export default interface IProps {
-    children: JSX.Element | JSX.Element[]
+    children: JSX.Element | JSX.Element[];
+    bgOpacity?: string;
 }

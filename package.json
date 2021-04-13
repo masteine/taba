@@ -10,10 +10,12 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@rematch/core": "^2.0.1",
     "react": "16.8",
     "react-dom": "16.8",
     "react-is": "16.8",
     "react-native": "0.64.0",
+    "react-redux": "^7.2.3",
     "react-router-native": "^5.2.0",
     "styled-components": "^5.0.0"
   },

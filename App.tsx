@@ -29,25 +29,33 @@ import {
 import { NativeRouter, Route } from "react-router-native";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/theme";
+import { Provider } from "react-redux";
 import { HomeScreen, SetupScreen, WorkingScreen } from "./src/screens";
+import { store } from "./src/appState";
 
 const App: React.FC = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <NativeRouter>
-        {/* <Route exact path="/" component={HomeScreen} /> */}
-        {/* <Route exact path="/" component={SetupScreen} /> */}
-        <Route exact path="/" component={WorkingScreen} />
-      </NativeRouter>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <NativeRouter>
+          <Route exact path="/" component={HomeScreen} />
+          <Route exact path="/setup" component={SetupScreen} />
+          <Route exact path="/working" component={WorkingScreen} />
+        </NativeRouter>
+      </ThemeProvider>
+    </Provider>
   );
 };
 
 export default App;
 
 /**
+ * ver. 1.0
  * Home
  * Setup
  * Workout
+ *
+ * ver. 2.0
+ * @next version
  * Complexes
  */
