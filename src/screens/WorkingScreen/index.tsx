@@ -1,23 +1,35 @@
-import React from "react";
-import { ImageBackground, StyleSheet, View, Text } from "react-native";
+import React, { useState } from "react";
+import { ImageBackground, View } from "react-native";
 import { PageWrap, Footer, Header } from "../../components/layouts";
-import { Button } from "../../components/ui";
-
+import { Button, Text, Card } from "../../components/ui";
+import { style } from "./style";
 const WorkingScreen: React.FC = () => {
+  const [work, setWork] = useState(true);
   const onPress = () => console.log("R");
+
   return (
     <ImageBackground
       source={require("../../assets/images/karsten-winegeart-ZiXqi1iSZyI-unsplash.jpg")}
-      style={styles.image}>
+      style={style.image}>
       <PageWrap>
         <Header time="4:00" />
 
-        <View style={styles.contentBlock}>
-          <Text>Rest</Text>
-        </View>
+        {work ? (
+          <View style={style.workingBlock}>
+            <Card title="Work" value="00:20" />
+            <Card title="Cycles" value="00:20" />
+            <Card title="Rest" value="00:20" />
+            <Card title="Rounds" value="00:20" />
+          </View>
+        ) : (
+          <View style={style.prepareBlock}>
+            <Text style={style.prepare_title}>Prepare!!!</Text>
+            <Text>10</Text>
+          </View>
+        )}
 
         <Footer>
-          <Button type="danger" styles={styles.btn} handleOnPress={onPress}>
+          <Button type="danger" styles={style.btn} handleOnPress={onPress}>
             Pause
           </Button>
           <Button type="warning" handleOnPress={onPress}>
@@ -28,18 +40,5 @@ const WorkingScreen: React.FC = () => {
     </ImageBackground>
   );
 };
-
-const styles = StyleSheet.create({
-  image: {
-    flex: 1,
-    resizeMode: "center"
-  },
-  contentBlock: {
-    flex: 6
-  },
-  btn: {
-    marginBottom: 15
-  }
-});
 
 export default WorkingScreen;

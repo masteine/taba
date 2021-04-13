@@ -1,3 +1,4 @@
 export default interface IProps {
-  children: JSX.Element | JSX.Element[]
+  title: string,
+  value: string
 }

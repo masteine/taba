@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from "react";
-import { ImageBackground, StyleSheet, View } from "react-native";
+import { ImageBackground, View } from "react-native";
 import { PageWrap, Footer, Header } from "../../components/layouts";
 import { Button } from "../../components/ui";
 import SetupItem from "../../components/SetupItem";
+import { style } from "./style";
 
 const data = [
   { label: "prepare", value: 10 },
@@ -35,11 +36,11 @@ const SetupScreen: React.FC = () => {
   return (
     <ImageBackground
       source={require("../../assets/images/bg_4.png")}
-      style={styles.image}>
+      style={style.image}>
       <PageWrap>
         <Header time="4:00" />
 
-        <View style={styles.listBlock}>
+        <View style={style.listBlock}>
           {timeSetup.map(({ value, label }, index) => {
             return (
               <SetupItem
@@ -53,10 +54,10 @@ const SetupScreen: React.FC = () => {
           })}
         </View>
         <Footer>
-          <Button handleOnPress={handlePress} type="accept" styles={styles.btn}>
+          <Button handleOnPress={handlePress} type="accept" styles={style.btn}>
             Save Complex
           </Button>
-          <Button handleOnPress={handlePress} type="info" styles={styles.btn}>
+          <Button handleOnPress={handlePress} type="info" styles={style.btn}>
             Choose Complex
           </Button>
           <Button handleOnPress={handlePress} link="/working">
@@ -67,18 +68,5 @@ const SetupScreen: React.FC = () => {
     </ImageBackground>
   );
 };
-
-const styles = StyleSheet.create({
-  image: {
-    flex: 1,
-    resizeMode: "center"
-  },
-  listBlock: {
-    flex: 5
-  },
-  btn: {
-    marginBottom: 15
-  }
-});
 
 export default SetupScreen;

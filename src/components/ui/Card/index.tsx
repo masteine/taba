@@ -1,12 +1,15 @@
 import React, { memo } from "react";
 import IProps from "./interface";
-import { StyledView } from "./styles";
+import { StyledView, StyledCard } from "./styles";
 import { Text } from "../../ui";
 
-const Card: React.FC<IProps> = ({ children }) => {
+const Card: React.FC<IProps> = ({ title, value }) => {
   return (
     <StyledView>
-      <Text>Work</Text>
+      <Text>{title}</Text>
+      <StyledCard>
+        <Text>{value}</Text>
+      </StyledCard>
     </StyledView>
   );
 };
