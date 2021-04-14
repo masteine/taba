@@ -27,7 +27,7 @@ import {
 } from "react-native/Libraries/NewAppScreen";
 
 import { NativeRouter, Route } from "react-router-native";
-import { ThemeProvider } from "styled-components/native";
+import { ThemeProvider } from "styled-components";
 import { theme } from "./theme";
 import { Provider } from "react-redux";
 import { HomeScreen, SetupScreen, WorkingScreen } from "./screens";
