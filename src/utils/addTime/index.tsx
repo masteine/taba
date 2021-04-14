@@ -1,0 +1,1 @@
+import IAddTime from "./interface";
