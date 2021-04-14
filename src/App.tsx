@@ -28,10 +28,10 @@ import {
 
 import { NativeRouter, Route } from "react-router-native";
 import { ThemeProvider } from "styled-components/native";
-import { theme } from "./src/theme";
+import { theme } from "./theme";
 import { Provider } from "react-redux";
-import { HomeScreen, SetupScreen, WorkingScreen } from "./src/screens";
-import { store } from "./src/appState";
+import { HomeScreen, SetupScreen, WorkingScreen } from "./screens";
+import { store } from "./appState";
 
 const App: React.FC = () => {
   return (
