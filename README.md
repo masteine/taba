@@ -7,6 +7,8 @@
 - Styled-components (# https://styled-components.com/)
 - React-router/native (# https://reactrouter.com/native/guides/philosophy)
 - Prettier (# https://prettier.io/)
+- Eslint (# https://eslint.org/)
+- Husky (# https://typicode.github.io/husky/#/)
 
 ### How run
 
