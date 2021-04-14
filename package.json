@@ -9,6 +9,19 @@
     "test": "jest",
     "lint": "eslint ."
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+        "eslint --quiet --fix"
+    ],
+    "*.{json,md,html}": [
+        "prettier --write"
+    ]
+  },
   "dependencies": {
     "@rematch/core": "^2.0.1",
     "react": "16.8",
@@ -41,7 +54,9 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-native": "^3.10.0",
+    "husky": "^6.0.0",
     "jest": "26.6.3",
+    "lint-staged": "^10.5.4",
     "metro-react-native-babel-preset": "0.64.0",
     "prettier": "^2.2.1",
     "react-test-renderer": "17.0.1",
