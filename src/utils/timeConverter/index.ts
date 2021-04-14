@@ -1,11 +1,12 @@
 import ITimeConverter from "./interface";
 
-function timeToString(value: number ): string {
-  return "4:00";
+function timeToString(value: number): string {
+  return new Date(value * 1000).toISOString().substr(14, 5);
 }
 
-function timeToNumber(value: string ): number {
-  return 240;
+function timeToNumber(value: string): number {
+  let time = Math.round(Number(value));
+  return time;
 }
 
 function timeConterter(value: string | number): ITimeConverter {

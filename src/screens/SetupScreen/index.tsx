@@ -30,7 +30,7 @@ const SetupScreen: React.FC = () => {
   );
 
   const onStartWorkout = () => console.log("start game");
-
+  console.log(setup);
   return (
     <ImageBackground
       source={require("../../assets/images/bg_4.png")}

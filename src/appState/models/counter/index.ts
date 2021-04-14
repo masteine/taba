@@ -1,6 +1,8 @@
 import { createModel } from "@rematch/core";
 import { RootModel } from "../index";
 import ICounter from "./interface";
+import { timeConterter, timeToString, timeToNumber } from "../../../utils/timeConverter"
+import {addTime} from "../../../utils/addTime";
 
 export const counter = createModel<RootModel>()({
     state: {
@@ -32,10 +34,12 @@ export const counter = createModel<RootModel>()({
         //     dispatch.count.increment(payload)
         // },
         async counterChange(payload: number) {
-            dispatch.counter.updateState({payload, name: "work"})
+            dispatch.counter.updateState({ payload, name: "work" })
         },
         async onChangeSetup(payload: ICounter["setup"]) {
-            dispatch.counter.updateState({payload, name: "setup"})
+            const a = timeToString(65)
+            console.log(a)
+            dispatch.counter.updateState({ payload, name: "setup" })
         }
     }),
 });
