@@ -10,17 +10,13 @@ function timeToNumber(value: string): number {
 }
 
 function timeConterter(value: string | number): ITimeConverter {
- 
   let timeNumber = typeof value === "string" ? 0 : value;
   let timeString = typeof value === "string" ? value : "0";
- 
+
   return {
     timeNumber,
     timeString
-  }
-
+  };
 }
 
-
-
- export { timeConterter, timeToString, timeToNumber }
+export { timeConterter, timeToString, timeToNumber };

@@ -8,7 +8,7 @@ const Card: React.FC<IProps> = ({ title, value }) => {
     <StyledView>
       <Text>{title}</Text>
       <StyledCard>
-        <Text>{value}</Text>
+        <Text>{value.toString()}</Text>
       </StyledCard>
     </StyledView>
   );

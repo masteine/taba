@@ -1,3 +1,8 @@
 export default interface ICounter {
-  setup: {label: string, value: number}[]
+  prepare: number,
+  work: number,
+  rest: number,
+  cycles: number,
+  rounds: number,
+  rounds_rest: number
 }

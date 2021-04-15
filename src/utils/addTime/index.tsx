@@ -1,16 +1,10 @@
 import IAddTime from "./interface";
+import { ISetup } from "../../interface/SetupInterface";
 
-const d = [
-  { label: "prepare", value: 10 },
-  { label: "work", value: 20 },
-  { label: "rest", value: 10 },
-  { label: "cycles", value: 8 },
-  { label: "rounds", value: 1 },
-  { label: "rounds rest", value: 20 }
-];
-
-function addTime(value: any[]): number {
-  return 240;
+function addTime(setup: ISetup): number {
+  const { prepare, work, rest, cycles, rounds, rounds_rest }: any = setup;
+  const time: number = (rest + work) * cycles * rounds;
+  return time;
 }
 
 export { addTime };

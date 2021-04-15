@@ -1,4 +1,4 @@
 export default interface IProps {
-  title: string,
-  value: string
+  title: string;
+  value: string | number;
 }
