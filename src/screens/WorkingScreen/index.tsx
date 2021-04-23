@@ -7,10 +7,11 @@ import { Button, Text, Card } from "../../components/ui";
 import { style } from "./style";
 import { timeToString } from "../../utils/timeConverter";
 import { useTimeCounter } from "../../hooks";
+import { useHistory } from "react-router-native";
 
 const WorkingScreen: React.FC = () => {
   const dispatch = useDispatch<Dispatch>();
-
+  const history = useHistory();
   const { setup, time, start, startingSetup } = useSelector(
     ({ counter }: RootState) => ({
       setup: counter.setup,
@@ -20,7 +21,7 @@ const WorkingScreen: React.FC = () => {
     })
   );
 
-  const { currentSetup, timeToEnd, cyclesTime } = useTimeCounter(
+  const { currentSetup, toCyclesEnd, allTime } = useTimeCounter(
     time,
     setup,
     start,
@@ -28,18 +29,24 @@ const WorkingScreen: React.FC = () => {
   );
   const { work, cycles, rest, rounds, prepare, rounds_rest } = currentSetup;
 
-  const onPause = () => console.log("R");
-  const stopWorking = () => dispatch.counter.stopTimer();
+  const onPause = () => dispatch.counter.stopTimer();
+
+  const stopWorking = () => {
+    dispatch.counter.stopTimer();
+    history.push("/setup");
+  };
 
   const isPrepare = prepare === 0;
   const isDone = start && prepare === 0 && cycles === 0 && rounds === 0;
+
+  // console.group("working screen", { currentSetup, toCyclesEnd, allTime });
 
   return (
     <ImageBackground
       source={require("../../assets/images/karsten-winegeart-ZiXqi1iSZyI-unsplash.jpg")}
       style={style.image}>
       <PageWrap bgOpacity="77">
-        <Header time={timeToEnd} />
+        <Header time={allTime} />
 
         {isPrepare ? (
           <View style={style.workingBlock}>
@@ -53,7 +60,7 @@ const WorkingScreen: React.FC = () => {
         ) : (
           <View style={style.prepareBlock}>
             <Text style={style.prepare_title}>Prepare!!!</Text>
-            <Text>{cyclesTime.toString()}</Text>
+            <Text>{toCyclesEnd.toString()}</Text>
           </View>
         )}
 
@@ -61,7 +68,7 @@ const WorkingScreen: React.FC = () => {
           <Button type="warning" styles={style.btn} handleOnPress={onPause}>
             Pause
           </Button>
-          <Button type="danger" link="/setup" handleOnPress={stopWorking}>
+          <Button type="danger" handleOnPress={stopWorking}>
             End workout
           </Button>
         </Footer>

@@ -13,13 +13,14 @@ export function useTimedOut(timeOut: number = 0, playing: boolean = false) {
   useEffect(() => {
     let interval: any;
 
-    if (play) {
+    if (playing && time !== 0) {
       interval = setInterval((): any => {
         setTime((time) => time - 1);
-      }, 1000);
+      }, 500);
     }
+
     return () => clearInterval(interval);
   }, [time, playing]);
 
-  return { time, play };
+  return { timeToEnd: time, play };
 }

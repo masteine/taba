@@ -1,91 +1,60 @@
 import { useState, useEffect, useMemo } from "react";
 import { ISetup, SetupProps } from "../../interface/SetupInterface";
-import { useTimedOut } from "../useTimedOut";
+
+import useInterval from "../useInterval";
+
 interface ITimer {
-  timeToEnd: number;
+  toCyclesEnd: number;
   currentSetup: ISetup;
-  cyclesTime: number;
+  allTime: number;
 }
 
 interface IMode {
   mode: string;
-  time: number;
+  toCyclesEnd: number;
 }
 
 const useTimeCounter = (
-  time: number,
+  time: number = 0,
   setup: ISetup,
-  starting: boolean,
+  starting: boolean = false,
   startingSetup: ISetup
 ): ITimer => {
-  const [timeToEnd, setTimeToEnd] = useState(time);
   const [currentSetup, setCurrentSetup] = useState(setup);
   const startMode: IMode =
     currentSetup.prepare > 0
-      ? { time: currentSetup.prepare, mode: "prepare" }
-      : { time: currentSetup.work, mode: "work" };
+      ? { toCyclesEnd: currentSetup.prepare, mode: "prepare" }
+      : { toCyclesEnd: currentSetup.work, mode: "work" };
 
   const [mode, setMode] = useState(startMode.mode);
-  const [cyclesTime, setCyclesTime] = useState(startMode.time);
+  const [allTime, setAllTime] = useState(time);
+  const [toCyclesEnd, setToCyclesEnd] = useState(startMode.toCyclesEnd);
+  const [nextRound, setNextRound] = useState<boolean>(true);
 
-  const t = useTimedOut(10, starting);
-  // prepare => (work => rest) * cycles * rounds > 1
-  useEffect((): any => {
-    if (!starting) return false;
+  // const { timeToEnd } = useTimedOut(10, starting);
 
-    let { prepare, work, rest, cycles, rounds, rounds_rest } = currentSetup;
+  useEffect(() => {
+    const {
+      work,
+      cycles,
+      rest,
+      rounds,
+      prepare,
+      rounds_rest
+    }: ISetup = currentSetup;
+    if (allTime === 0) return setNextRound(false);
+  }, [allTime, nextRound, currentSetup]);
 
-    // let interval = setInterval((): any => {
-    //   if (mode !== "prepare") {
-    //     setTimeToEnd((time) => time - 1);
-    //   }
-    //   // const nextSetup = {currentSetup[mode]: currentSetup[mode] - 1};
-
-    //   // setCurrentSetup({ ...currentSetup, nextSetup }
-    //   //   );
-
-    //   setCyclesTime((seconds) => seconds - 1);
-    // }, 1000);
-
-    // if (cyclesTime === 0 || !starting) {
-    //   if (cycles > 0) {
-    //     let nextMode = { mode: "", time: 0 };
-
-    //     if (mode === "prepare") {
-    //       setCurrentSetup({ ...currentSetup, prepare: 0 });
-    //       nextMode = { mode: "work", time: work };
-    //     }
-    //     if (mode === "rest") {
-    //       setCurrentSetup((s) => ({
-    //         ...s,
-    //         cycles: s.cycles - 1,
-    //         work: startingSetup.work
-    //       }));
-    //       nextMode = { mode: "work", time: work };
-    //     }
-
-    //     if (mode === "work") {
-    //       nextMode = { mode: "rest", time: rest };
-    //     }
-
-    //     clearInterval(interval);
-    //     setMode(nextMode.mode);
-    //     setCyclesTime(nextMode.time);
-    //     return clearInterval(interval);
-    //   }
-    //   clearInterval(interval);
-    //   return clearInterval(interval);
-    // }
-
-    // return () => clearInterval(interval);
-  }, [starting, cyclesTime, currentSetup, time, mode]);
-
-  // console.log(currentSetup, cyclesTime, timeToEnd, mode);
+  useInterval(() => {
+    if (toCyclesEnd > 0 && starting) {
+      setToCyclesEnd((toCyclesEnd) => toCyclesEnd - 1);
+    }
+  }, starting);
 
   return {
-    timeToEnd,
+    allTime,
     currentSetup,
-    cyclesTime
+    toCyclesEnd
   };
 };
 
